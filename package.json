@@ -1,4 +1,16 @@
 {
+
+  "name": "human.resources.mini",
+  "description": "An application for the management of employees within a company",
+  "version": "1.0.0",
+  "main": "server.js",
+
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^8.2.4",
