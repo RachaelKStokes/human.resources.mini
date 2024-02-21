@@ -17,87 +17,75 @@ afterConnection = () => {
     console.log("===================================");
     promptUser();
 };
-inquirer.prompt(
-    {
-        message: "test",
-        name: "abc",
-        type: "list",
-        choices: [
-            'a',
-            'b'
-        ]
-    }
-).then(answers => {
+
+const prompt = inquirer.createPromptModule();
+
+//Options menu
+inquirer.prompt({
+    message: 'Please select an option',
+    type: 'list',
+    name: 'view',
+    choices: [
+        'View All Employees',
+        'View All Roles',
+        'View All Departments',
+        'View All Employees By Department',
+        'Update Employee Role',
+        'Update Employee Manager',
+        'Add Employee',
+        'Add Department',
+        'Add Role',
+        'Remove Employee',
+        'Exit'
+    ]
+}).then(answers => {
     console.log(answers)
-})
-// const prompt = inquirer.createPromptModule();
+    const { choices } = answers;
 
-// //Options menu
-// inquirer.prompt({
-//     message: 'Please select an option',
-//     type: 'list',
-//     name: 'view',
-//     choices: [
-//         'View All Employees',
-//         'View All Roles',
-//         'View All Departments',
-//         'View All Employees By Department',
-//         'Update Employee Role',
-//         'Update Employee Manager',
-//         'Add Employee',
-//         'Add Department',
-//         'Add Role',
-//         'Remove Employee',
-//         'Exit'
-//     ]
-// }).then(answers => {
-//     console.log(answers)
-//     // const { choices } = answers;
+    if (choices === 'View All Employees') {
+        showEmployees();
+    }
 
-//     // if (choices === 'View All Employees') {
-//     //     showEmployees();
-//     // }
+    if (choices === 'View All Roles') {
+        showRoles();
+    }
 
-//     // if (choices === 'View All Roles') {
-//     //     showRoles();
-//     // }
+    if (choices === 'View All Departments') {
+        showDepartments();
+    }
 
-//     // if (choices === 'View All Departments') {
-//     //     showDepartments();
-//     // }
+    if (choices === 'View All Employees By Department') {
+        showEmployeesByDept();
+    }
 
-//     // if (choices === 'View All Employees By Department') {
-//     //     showEmployeesByDept();
-//     // }
+    if (choices === 'Update Employee Role') {
+        updateRole();
+    }
 
-//     // if (choices === 'Update Employee Role') {
-//     //     updateRole();
-//     // }
+    if (choices === 'Update Employee Manager') {
+        updateManager();
+    }
 
-//     // if (choices === 'Update Employee Manager') {
-//     //     updateManager();
-//     // }
+    if (choices === 'Add Employee') {
+        addEmployee();
+    }
 
-//     // if (choices === 'Add Employee') {
-//     //     addEmployee();
-//     // }
+    if (choices === 'Add Role') {
+        addRole();
+    }
 
-//     // if (choices === 'Add Role') {
-//     //     addRole();
-//     // }
+    if(choices === 'Add Department') {
+        addDepartment();
+    }
 
-//     // if(choices === 'Add Department') {
-//     //     addDepartment();
-//     // }
+    if (choices === 'Remove Employee') {
+        removeEmployee();
+    }
 
-//     // if (choices === 'Remove Employee') {
-//     //     removeEmployee();
-//     // }
-
-//     // if (choices === 'Exit') {
-//     //     connection.end();
-//     // }
-// });
+    if (choices === 'Exit') {
+        connection.end();
+    }
+});
 
 //Options pages------------
 
